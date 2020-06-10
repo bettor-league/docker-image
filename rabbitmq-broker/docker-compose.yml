@@ -1,8 +1,9 @@
 version: '3.3'
 services:
-  mongo-database:
+  rabbitmq-broker:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 27017:27017
+      - 5672:5672
+      - 15672:15672

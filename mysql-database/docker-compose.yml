@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  phpmyadmin-client:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8090:80"
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=root
+    links:
+      - mysql-database:db
+  mysql-database:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bettorLeague

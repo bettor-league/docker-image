@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  zookeeper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "2181:2181"
+    volumes:
+      - "zookeeper_data:/bitnami"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+
+volumes:
+  zookeeper_data:
+    driver: local

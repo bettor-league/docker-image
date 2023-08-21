@@ -5,4 +5,16 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 27017:27017
+      - "27017:27017"
+
+  mongo-express:
+    build:
+      context: ./mongo-express
+      dockerfile: Dockerfile
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo-database
+      ME_CONFIG_MONGODB_PORT: "27017"
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo-database
